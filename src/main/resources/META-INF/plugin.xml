@@ -1,0 +1,24 @@
+<idea-plugin>
+    <id>woaini.liquibase.plugin</id>
+    <name>Plugin display name here</name>
+    <vendor email="support@yourcompany.com" url="http://www.yourcompany.com">YourCompany</vendor>
+
+    <description><![CDATA[
+    Enter short description for your plugin here.<br>
+    <em>most HTML tags may be used</em>
+    ]]></description>
+    Выделите текст и ищите выделенное на StackOverflow, нажав на соответствующую строку в меню Tools!
+    <extensions defaultExtensionNs="com.intellij">
+        <!-- Add your extensions here -->
+    </extensions>
+
+
+    <actions>
+        <action class="AskQuestion" id="StackOverflow.AskQuestion.ToolsMenu"
+                text="Ask question on Stack Overflow!">
+            <add-to-group
+                    group-id="ToolsMenu" anchor="last">
+            </add-to-group>
+        </action>
+    </actions>
+</idea-plugin>
