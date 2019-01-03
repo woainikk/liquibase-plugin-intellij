@@ -7,18 +7,23 @@
     Enter short description for your plugin here.<br>
     <em>most HTML tags may be used</em>
     ]]></description>
-    Выделите текст и ищите выделенное на StackOverflow, нажав на соответствующую строку в меню Tools!
+    Description will be here
     <extensions defaultExtensionNs="com.intellij">
         <!-- Add your extensions here -->
     </extensions>
 
 
     <actions>
-        <action class="AskQuestion" id="StackOverflow.AskQuestion.ToolsMenu"
-                text="Ask question on Stack Overflow!">
-            <add-to-group
-                    group-id="ToolsMenu" anchor="last">
-            </add-to-group>
+    <group id="LiquibaseGroup" text="Liquibase" popup="true">
+        <add-to-group group-id="EditorTabPopupMenu" anchor="last"/>
+
+        <action id="generateChangesetAction"
+                class="GenerateChangeSet"
+                text="Generate Changeset"
+                popup="true"
+                description="Generate Liquibase Changeset for Data Source">
         </action>
+
+    </group>
     </actions>
 </idea-plugin>
