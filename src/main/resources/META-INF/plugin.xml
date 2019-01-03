@@ -9,21 +9,32 @@
     ]]></description>
     Description will be here
     <extensions defaultExtensionNs="com.intellij">
-        <!-- Add your extensions here -->
+        <applicationConfigurable groupId="tools" displayName="Changesets Author"
+                                 id="AuthorForChangesets"
+                                 instance="AuthorNameSettings"/>
+        <applicationService serviceInterface="AuthorNameSettings"
+                            serviceImplementation="AuthorNameSettings"/>
     </extensions>
 
 
     <actions>
-    <group id="LiquibaseGroup" text="Liquibase" popup="true">
-        <add-to-group group-id="EditorTabPopupMenu" anchor="last"/>
+        <group id="LiquibaseGroup" text="Liquibase" popup="true">
+            <add-to-group group-id="EditorTabPopupMenu" anchor="last"/>
 
-        <action id="generateChangesetAction"
-                class="GenerateChangeSet"
-                text="Generate Changeset"
-                popup="true"
-                description="Generate Liquibase Changeset for Data Source">
-        </action>
+            <action id="generateChangesetAction"
+                    class="GenerateChangeSet"
+                    text="Generate Changeset"
+                    popup="true"
+                    description="Add migration for the database">
+            </action>
 
-    </group>
+            <action id="setAsAChangelog"
+                    class="Changelog"
+                    text="Set as a changelog"
+                    popup="true"
+                    description="Choose this file as a current changelog">
+            </action>
+
+        </group>
     </actions>
 </idea-plugin>
