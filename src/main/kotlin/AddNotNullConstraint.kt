@@ -1,21 +1,14 @@
 import com.intellij.openapi.actionSystem.AnAction
 import com.intellij.openapi.actionSystem.AnActionEvent
-import com.intellij.openapi.fileEditor.FileEditorManager
 import com.intellij.openapi.project.ProjectManager
 import java.io.File
 import javax.swing.JOptionPane
 
-class GenerateChangeSet : AnAction() {
-
-    companion object {
-
-        var id = 1
-    }
+class AddNotNullConstraint : AnAction() {
 
     override fun actionPerformed(e: AnActionEvent?) {
 
         val curentProject = ProjectManager.getInstance().openProjects[0]
-        val currentfile = FileEditorManager.getInstance(curentProject).selectedFiles[0].name
         if (Author.authorName == null) {
             JOptionPane.showMessageDialog(
                 null, "Author name is empty!\n " +
@@ -31,10 +24,10 @@ class GenerateChangeSet : AnAction() {
             return
 
         }
-        insertChangeSet(currentfile)
+        insertNotNullConstraint()
     }
 
-    private fun insertChangeSet(filename: String) {
+    private fun insertNotNullConstraint() {
         val changelogPath = Changelog.changelogFileName
         val changelogFile = File(changelogPath)
 
@@ -43,14 +36,19 @@ class GenerateChangeSet : AnAction() {
         }
         changelogFile.appendText(
             "- changeSet:\n" +
-                    "   id: $id\n" +
+                    "   id: ${GenerateChangeSet.id}\n" +
                     "   author: ${Author.authorName}\n" +
                     "   changes:\n" +
-                    "   - sqlfile:\n" +
-                    "       path: $filename\n" +
-                    "       relativeToChangelogFile: true \n\n"
+                    "   - addNotNullConstraint:\n" +
+                    "       columnDataType:\n" +
+                    "       columnName:\n" +
+                    "       defaultNullValue:\n" +
+                    "       tableName:\n\n"
         )
-        id++
+        GenerateChangeSet.id++
+
+
     }
+
 
 }

@@ -1,5 +1,5 @@
 object Author {
 
-    lateinit var authorName: String
+    var authorName: String? = null
 
 }

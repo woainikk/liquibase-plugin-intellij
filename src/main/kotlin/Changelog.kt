@@ -6,7 +6,7 @@ import com.intellij.openapi.project.ProjectManager
 class Changelog : AnAction() {
 
     companion object {
-        lateinit var changelogFileName: String
+        var changelogFileName: String? = null
     }
 
     override fun actionPerformed(e: AnActionEvent?) {
