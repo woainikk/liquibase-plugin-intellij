@@ -45,11 +45,27 @@ fun checkFileContainString(masterFile: File, changelogFileName: String): Boolean
     while (scanner.hasNextLine()) {
         val line = scanner.nextLine()
         lineNum++
-        println(line)
-        println(changelogFileName)
         if (line.contains(changelogFileName)) {
             return true
         }
     }
     return false
+}
+
+fun findLastId(changelogFileName: String): Int {
+    val scanner = Scanner(File(changelogFileName))
+    var lineNum = 0
+    var maxId = 0
+    while (scanner.hasNextLine()) {
+        var line = scanner.nextLine()
+        lineNum++
+        if (line.contains("id")) {
+            line = line.substringAfter(":")
+            line = line.replace(" ", "")
+            if (line.toInt() > maxId) {
+                maxId = line.toInt()
+            }
+        }
+    }
+    return ++maxId
 }

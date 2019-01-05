@@ -1,13 +1,14 @@
 <idea-plugin>
     <id>woaini.liquibase.plugin</id>
-    <name>Plugin display name here</name>
-    <vendor email="support@yourcompany.com" url="http://www.yourcompany.com">YourCompany</vendor>
+    <name>Liquibase ChangeSets Generator</name>
 
     <description><![CDATA[
     Enter short description for your plugin here.<br>
     <em>most HTML tags may be used</em>
     ]]></description>
-    Description will be here
+    This is plugin for Intellij Idea, which hepls to improve creation changesets with liquibase.
+    Firstly, set your name as author of changesets in Settings -> Tools -> Changesets Author.
+    Then, choose changelog-master and cnangelog by click on chosen file -> Liquibase -> Set as a Changelog/Master-Changelog.
     <extensions defaultExtensionNs="com.intellij">
         <applicationConfigurable groupId="tools" displayName="Changesets Author"
                                  id="AuthorForChangesets"
@@ -153,11 +154,5 @@
             </action>
             <add-to-group group-id="LiquibaseGroup"/>
         </group>
-
-
-
-
-
-
     </actions>
 </idea-plugin>

@@ -6,6 +6,7 @@ import addHeaderToChangelog
 import checkAuthorAndChangelogIsDetermined
 import com.intellij.openapi.actionSystem.AnAction
 import com.intellij.openapi.actionSystem.AnActionEvent
+import findLastId
 import java.io.File
 
 class RenameView : AnAction() {
@@ -21,15 +22,16 @@ class RenameView : AnAction() {
     private fun insertRenameView() {
         val changelogFile = File(Changelog.changelogFileName)
         addHeaderToChangelog(changelogFile)
+        GenerateChangeSet.id = findLastId(Changelog.changelogFileName!!)
 
         changelogFile.appendText(
-            "- changeSet:\n" +
-                    "   id: ${GenerateChangeSet.id}\n" +
-                    "   author: ${Author.authorName}\n" +
-                    "   changes:\n" +
-                    "   - renameView:\n" +
-                    "       newViewName:\n" +
-                    "       oldViewName:\n\n"
+            "  - changeSet:\n" +
+                    "     id: ${GenerateChangeSet.id}\n" +
+                    "     author: ${Author.authorName}\n" +
+                    "     changes:\n" +
+                    "     - renameView:\n" +
+                    "         newViewName:\n" +
+                    "         oldViewName:\n\n"
         )
         GenerateChangeSet.id++
 

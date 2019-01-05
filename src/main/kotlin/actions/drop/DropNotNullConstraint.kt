@@ -7,6 +7,7 @@ import addHeaderToChangelog
 import checkAuthorAndChangelogIsDetermined
 import com.intellij.openapi.actionSystem.AnAction
 import com.intellij.openapi.actionSystem.AnActionEvent
+import findLastId
 import java.io.File
 
 class DropNotNullConstraint : AnAction() {
@@ -22,16 +23,17 @@ class DropNotNullConstraint : AnAction() {
     private fun insertDropNotNullConstraint() {
         val changelogFile = File(Changelog.changelogFileName)
         addHeaderToChangelog(changelogFile)
+        GenerateChangeSet.id = findLastId(Changelog.changelogFileName!!)
 
         changelogFile.appendText(
-            "- changeSet:\n" +
-                    "   id: ${GenerateChangeSet.id}\n" +
-                    "   author: ${Author.authorName}\n" +
-                    "   changes:\n" +
-                    "   - dropNotNullConstraint:\n" +
-                    "       columnDataType:\n" +
-                    "       columnName:\n" +
-                    "       tableName:\n\n"
+            "  - changeSet:\n" +
+                    "     id: ${GenerateChangeSet.id}\n" +
+                    "     author: ${Author.authorName}\n" +
+                    "     changes:\n" +
+                    "     - dropNotNullConstraint:\n" +
+                    "         columnDataType:\n" +
+                    "         columnName:\n" +
+                    "         tableName:\n\n"
         )
         GenerateChangeSet.id++
 

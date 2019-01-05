@@ -6,6 +6,7 @@ import addHeaderToChangelog
 import checkAuthorAndChangelogIsDetermined
 import com.intellij.openapi.actionSystem.AnAction
 import com.intellij.openapi.actionSystem.AnActionEvent
+import findLastId
 import java.io.File
 
 class AddAutoIncrement : AnAction() {
@@ -18,17 +19,18 @@ class AddAutoIncrement : AnAction() {
     private fun insertAddAutoIncrement() {
         val changelogFile = File(Changelog.changelogFileName)
         addHeaderToChangelog(changelogFile)
+        GenerateChangeSet.id = findLastId(Changelog.changelogFileName!!)
         changelogFile.appendText(
-            "- changeSet:\n" +
-                    "   id: ${GenerateChangeSet.id}\n" +
-                    "   author: ${Author.authorName}\n" +
-                    "   changes:\n" +
-                    "   - addAutoIncrement:\n" +
-                    "       columnDataType:\n" +
-                    "       columnName:\n" +
-                    "       tableName:\n" +
-                    "       incrementBy: 1\n" +
-                    "       startWith:\n\n"
+            "  - changeSet:\n" +
+                    "     id: ${GenerateChangeSet.id}\n" +
+                    "     author: ${Author.authorName}\n" +
+                    "     changes:\n" +
+                    "     - addAutoIncrement:\n" +
+                    "         columnDataType:\n" +
+                    "         columnName:\n" +
+                    "         tableName:\n" +
+                    "         incrementBy: 1\n" +
+                    "         startWith:\n\n"
         )
         GenerateChangeSet.id++
 
