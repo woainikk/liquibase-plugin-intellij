@@ -49,49 +49,115 @@
                     description="Reset id value for changelog">
             </action>
 
-
+            <separator/>
             <group id="LiquibaseAdd" text="Add..." popup="true">
                 <add-to-group group-id="LiquibaseGroup"/>
-                <action id="actions.AddColumn"
-                        class="actions.AddColumn"
+                <action id="actions.add.AddColumn"
+                        class="actions.add.AddColumn"
                         text="Column"
                         popup="true"
                         description="Generate Changeset for adding a column">
                 </action>
-                <action id="actions.AddNotNullConstraint"
-                        class="actions.AddNotNullConstraint"
+                <action id="actions.add.AddNotNullConstraint"
+                        class="actions.add.AddNotNullConstraint"
                         text="Not Null Constraint"
                         popup="true"
                         description="Add not null constraint for a column">
                 </action>
                 <action id="AddAutoIncrement"
-                        class="actions.AddAutoIncrement"
+                        class="actions.add.AddAutoIncrement"
                         text="Auto Increment"
                         popup="true"
                         description="Add auto increment for a column">
                 </action>
                 <action id="AddForeignKey"
-                        class="actions.AddForeignKey"
+                        class="actions.add.AddForeignKey"
                         text="Foreign Key"
                         popup="true"
                         description="Add foreign key for a table">
                 </action>
             </group>
 
-            <group id="LiquibaseDrop" text="Drop..." popup="true">
-                <action class="actions.DropNotNullConstraint"
-                        id="actions.DropNotNullConstraint"
-                        text="Drop Not Null Constraint">
-                </action>
-                <action
-                        id="actions.DropColumn"
-                        class="actions.DropColumn"
-                        text="Drop Column"
-                        popup="true"
-                        description="Generate Changeset for dropping a column">
-                </action>
-                <add-to-group group-id="LiquibaseGroup"/>
-            </group>
         </group>
+
+        <group id="LiquibaseDrop" text="Drop..." popup="true">
+            <action class="actions.drop.DropNotNullConstraint"
+                    id="actions.drop.DropNotNullConstraint"
+                    text="Not Null Constraint">
+            </action>
+            <action
+                    id="actions.drop.DropColumn"
+                    class="actions.drop.DropColumn"
+                    text="Column"
+                    popup="true"
+                    description="Generate Changeset for dropping a column">
+            </action>
+            <action
+                    id="actions.drop.DropTable"
+                    class="actions.drop.DropTable"
+                    text="Table"
+                    popup="true"
+                    description="Generate Changeset for dropping a table">
+            </action>
+            <action
+                    id="actions.drop.DropFK"
+                    class="actions.drop.DropForeignKey"
+                    text="Foreign Key"
+                    popup="true"
+                    description="Generate Changeset for dropping a foreign key">
+            </action>
+            <action
+                    id="actions.drop.DropIndex"
+                    class="actions.drop.DropIndex"
+                    text="Index"
+                    popup="true"
+                    description="Generate Changeset for dropping an index">
+            </action>
+            <add-to-group group-id="LiquibaseGroup"/>
+        </group>
+
+        <group id="LiquibaseCreate" text="Create..." popup="true">
+            <action id="CreateIndex"
+                    class="actions.create.CreateIndex"
+                    text="Index"
+                    popup="true"
+                    description="Create index for a table">
+            </action>
+            <action id="CreateView"
+                    class="actions.create.CreateView"
+                    text="View"
+                    popup="true"
+                    description="Create view for a table">
+            </action>
+            <add-to-group group-id="LiquibaseGroup"/>
+        </group>
+
+        <group id="LiquibaseRename" text="Rename..." popup="true">
+            <action id="RenameColumn"
+                    class="actions.rename.RenameColumn"
+                    text="Column"
+                    popup="true"
+                    description="Rename column in a table">
+            </action>
+            <action id="RenameTable"
+                    class="actions.rename.RenameTable"
+                    text="Table"
+                    popup="true"
+                    description="Rename table in database">
+            </action>
+            <action id="RenameView"
+                    class="actions.rename.RenameView"
+                    text="View"
+                    popup="true"
+                    description="Rename view in database">
+            </action>
+            <add-to-group group-id="LiquibaseGroup"/>
+        </group>
+
+
+
+
+
+
     </actions>
 </idea-plugin>

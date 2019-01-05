@@ -1,6 +1,7 @@
 package actions
 
 import addHeaderToChangelog
+import checkFileContainString
 import checkMasterChangelogDetermined
 import com.intellij.openapi.actionSystem.AnAction
 import com.intellij.openapi.actionSystem.AnActionEvent
@@ -21,7 +22,8 @@ class Changelog : AnAction() {
 
         if (!checkMasterChangelogDetermined()) return
         val changelogMasterFile = File(MasterChangelog.changelogMasterName)
-        if (!(MasterChangelog.changelogMasterName!!.contains(changelogAbsolutePath))) {
+
+        if (!checkFileContainString(changelogMasterFile, changelogFileName!!)) {
             addHeaderToChangelog(changelogMasterFile)
             changelogMasterFile.appendText(
                 "    - include:\n" +

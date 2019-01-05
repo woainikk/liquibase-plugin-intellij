@@ -1,23 +1,24 @@
-package actions
+package actions.create
 
-import Author
+import actions.Changelog
+import actions.GenerateChangeSet
 import addHeaderToChangelog
 import checkAuthorAndChangelogIsDetermined
 import com.intellij.openapi.actionSystem.AnAction
 import com.intellij.openapi.actionSystem.AnActionEvent
 import java.io.File
 
-class DropNotNullConstraint : AnAction() {
+class CreateIndex : AnAction() {
 
     override fun actionPerformed(e: AnActionEvent?) {
 
         if (!checkAuthorAndChangelogIsDetermined()) {
             return
         }
-        insertDropNotNullConstraint()
+        insertAddIndex()
     }
 
-    private fun insertDropNotNullConstraint() {
+    private fun insertAddIndex() {
         val changelogFile = File(Changelog.changelogFileName)
         addHeaderToChangelog(changelogFile)
 
@@ -26,13 +27,16 @@ class DropNotNullConstraint : AnAction() {
                     "   id: ${GenerateChangeSet.id}\n" +
                     "   author: ${Author.authorName}\n" +
                     "   changes:\n" +
-                    "   - dropNotNullConstraint:\n" +
-                    "       columnDataType:\n" +
-                    "       columnName:\n" +
-                    "       tableName:\n\n"
+                    "   - createIndex:\n" +
+                    "       columns:\n" +
+                    "       - column:\n" +
+                    "           name:\n" +
+                    "           type:\n" +
+                    "       indexName:\n" +
+                    "       tableName:\n" +
+                    "       unique:\n\n"
         )
         GenerateChangeSet.id++
 
     }
-
 }

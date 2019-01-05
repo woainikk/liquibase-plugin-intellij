@@ -3,6 +3,7 @@ package actions
 import Author
 import addHeaderToChangelog
 import checkAuthorAndChangelogIsDetermined
+import checkFileContainString
 import com.intellij.openapi.actionSystem.AnAction
 import com.intellij.openapi.actionSystem.AnActionEvent
 import com.intellij.openapi.fileEditor.FileEditorManager
@@ -28,7 +29,7 @@ class GenerateChangeSet : AnAction() {
     private fun insertChangeSet(filename: String) {
         val changelogFile = File(Changelog.changelogFileName)
         addHeaderToChangelog(changelogFile)
-
+        if (checkFileContainString(changelogFile, filename)) return
         changelogFile.appendText(
             "- changeSet:\n" +
                     "   id: $id\n" +

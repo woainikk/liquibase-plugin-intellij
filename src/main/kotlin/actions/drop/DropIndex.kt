@@ -1,23 +1,24 @@
-package actions
+package actions.drop
 
-import Author
+import actions.Changelog
+import actions.GenerateChangeSet
 import addHeaderToChangelog
 import checkAuthorAndChangelogIsDetermined
 import com.intellij.openapi.actionSystem.AnAction
 import com.intellij.openapi.actionSystem.AnActionEvent
 import java.io.File
 
-class AddColumn : AnAction() {
+class DropIndex : AnAction() {
 
     override fun actionPerformed(e: AnActionEvent?) {
 
         if (!checkAuthorAndChangelogIsDetermined()) {
             return
         }
-        insertAddingColumn()
+        insertDropIndex()
     }
 
-    private fun insertAddingColumn() {
+    private fun insertDropIndex() {
         val changelogFile = File(Changelog.changelogFileName)
         addHeaderToChangelog(changelogFile)
 
@@ -26,16 +27,11 @@ class AddColumn : AnAction() {
                     "   id: ${GenerateChangeSet.id}\n" +
                     "   author: ${Author.authorName}\n" +
                     "   changes:\n" +
-                    "   - addColumn:\n" +
-                    "         columns:\n" +
-                    "           - column:\n" +
-                    "               name:\n" +
-                    "               type: \n" +
-                    "         tableName:\n\n"
+                    "   - dropIndex:\n" +
+                    "       indexName:\n" +
+                    "       tableName:\n\n"
         )
         GenerateChangeSet.id++
 
-
     }
-
 }

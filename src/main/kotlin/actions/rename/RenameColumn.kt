@@ -1,32 +1,37 @@
-package actions
+package actions.rename
 
+import actions.Changelog
+import actions.GenerateChangeSet
 import addHeaderToChangelog
 import checkAuthorAndChangelogIsDetermined
 import com.intellij.openapi.actionSystem.AnAction
 import com.intellij.openapi.actionSystem.AnActionEvent
 import java.io.File
 
-class AddAutoIncrement : AnAction() {
+class RenameColumn : AnAction() {
 
     override fun actionPerformed(e: AnActionEvent?) {
-        checkAuthorAndChangelogIsDetermined()
-        insertAddAutoIncrement()
+
+        if (!checkAuthorAndChangelogIsDetermined()) {
+            return
+        }
+        insertRenameColumn()
     }
 
-    private fun insertAddAutoIncrement() {
+    private fun insertRenameColumn() {
         val changelogFile = File(Changelog.changelogFileName)
         addHeaderToChangelog(changelogFile)
+
         changelogFile.appendText(
             "- changeSet:\n" +
                     "   id: ${GenerateChangeSet.id}\n" +
                     "   author: ${Author.authorName}\n" +
                     "   changes:\n" +
-                    "   - addAutoIncrement:\n" +
+                    "   - renameColumn:\n" +
                     "       columnDataType:\n" +
-                    "       columnName:\n" +
-                    "       tableName:\n" +
-                    "       incrementBy: 1\n" +
-                    "       startWith:\n\n"
+                    "       newColumnName:\n\n" +
+                    "       oldColumnName:\n" +
+                    "       tableName:\n\n"
         )
         GenerateChangeSet.id++
 

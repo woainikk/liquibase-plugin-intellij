@@ -1,6 +1,7 @@
 import actions.Changelog
 import actions.MasterChangelog
 import java.io.File
+import java.util.*
 import javax.swing.JOptionPane
 
 fun checkAuthorAndChangelogIsDetermined(): Boolean {
@@ -13,7 +14,7 @@ fun checkAuthorAndChangelogIsDetermined(): Boolean {
     }
     if (Changelog.changelogFileName == null) {
         JOptionPane.showMessageDialog(
-            null, "actions.Changelog file is not determined!\n " +
+            null, "Changelog file is not determined!\n " +
                     "Click on prefered as a changelod file and click Liquibase -> Set as a changelog."
         )
         return false
@@ -36,4 +37,19 @@ fun checkMasterChangelogDetermined(): Boolean {
         return false
     }
     return true
+}
+
+fun checkFileContainString(masterFile: File, changelogFileName: String): Boolean {
+    val scanner = Scanner(masterFile)
+    var lineNum = 0
+    while (scanner.hasNextLine()) {
+        val line = scanner.nextLine()
+        lineNum++
+        println(line)
+        println(changelogFileName)
+        if (line.contains(changelogFileName)) {
+            return true
+        }
+    }
+    return false
 }

@@ -1,22 +1,24 @@
-package actions
+package actions.rename
 
-import Author
+import actions.Changelog
+import actions.GenerateChangeSet
 import addHeaderToChangelog
 import checkAuthorAndChangelogIsDetermined
 import com.intellij.openapi.actionSystem.AnAction
 import com.intellij.openapi.actionSystem.AnActionEvent
 import java.io.File
 
-class DropColumn : AnAction() {
+class RenameTable : AnAction() {
 
     override fun actionPerformed(e: AnActionEvent?) {
+
         if (!checkAuthorAndChangelogIsDetermined()) {
             return
         }
-        insertDroppingColumn()
+        insertRenameTable()
     }
 
-    private fun insertDroppingColumn() {
+    private fun insertRenameTable() {
         val changelogFile = File(Changelog.changelogFileName)
         addHeaderToChangelog(changelogFile)
 
@@ -25,9 +27,9 @@ class DropColumn : AnAction() {
                     "   id: ${GenerateChangeSet.id}\n" +
                     "   author: ${Author.authorName}\n" +
                     "   changes:\n" +
-                    "   - dropColumn:\n" +
-                    "       columnName:\n" +
-                    "       tableName:\n\n"
+                    "   - renameTable:\n" +
+                    "       newTableName:\n" +
+                    "       oldTableName:\n\n"
         )
         GenerateChangeSet.id++
 
