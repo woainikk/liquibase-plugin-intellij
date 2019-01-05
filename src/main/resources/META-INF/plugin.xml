@@ -8,7 +8,8 @@
     ]]></description>
     This is plugin for Intellij Idea, which hepls to improve creation changesets with liquibase.
     Firstly, set your name as author of changesets in Settings -> Tools -> Changesets Author.
-    Then, choose changelog-master and cnangelog by click on chosen file -> Liquibase -> Set as a Changelog/Master-Changelog.
+    Then, choose changelog-master and cnangelog by click on chosen file -> Liquibase -> Set as a
+    Changelog/Master-Changelog.
     <extensions defaultExtensionNs="com.intellij">
         <applicationConfigurable groupId="tools" displayName="Changesets Author"
                                  id="AuthorForChangesets"
@@ -29,6 +30,18 @@
                     description="Add migration for the database">
             </action>
 
+            <action id="setIdValue"
+                    class="actions.IdValue"
+                    text="Reset id value"
+                    popup="true"
+                    description="Reset id value for changelog">
+            </action>
+            <separator/>
+
+        </group>
+
+        <group id="LiquibaseSetAS" text="Set as..." popup="true">
+            <add-to-group group-id="LiquibaseGroup"/>
             <action id="setAsAChangelog"
                     class="actions.Changelog"
                     text="Set as a changelog"
@@ -42,43 +55,34 @@
                     popup="true"
                     description="Choose this file as a master changelog">
             </action>
+        </group>
 
-            <action id="setIdValue"
-                    class="actions.IdValue"
-                    text="Reset id value"
+        <group id="LiquibaseAdd" text="Add..." popup="true">
+            <add-to-group group-id="LiquibaseGroup"/>
+            <action id="actions.add.AddColumn"
+                    class="actions.add.AddColumn"
+                    text="Column"
                     popup="true"
-                    description="Reset id value for changelog">
+                    description="Generate Changeset for adding a column">
             </action>
-
-            <separator/>
-            <group id="LiquibaseAdd" text="Add..." popup="true">
-                <add-to-group group-id="LiquibaseGroup"/>
-                <action id="actions.add.AddColumn"
-                        class="actions.add.AddColumn"
-                        text="Column"
-                        popup="true"
-                        description="Generate Changeset for adding a column">
-                </action>
-                <action id="actions.add.AddNotNullConstraint"
-                        class="actions.add.AddNotNullConstraint"
-                        text="Not Null Constraint"
-                        popup="true"
-                        description="Add not null constraint for a column">
-                </action>
-                <action id="AddAutoIncrement"
-                        class="actions.add.AddAutoIncrement"
-                        text="Auto Increment"
-                        popup="true"
-                        description="Add auto increment for a column">
-                </action>
-                <action id="AddForeignKey"
-                        class="actions.add.AddForeignKey"
-                        text="Foreign Key"
-                        popup="true"
-                        description="Add foreign key for a table">
-                </action>
-            </group>
-
+            <action id="actions.add.AddNotNullConstraint"
+                    class="actions.add.AddNotNullConstraint"
+                    text="Not Null Constraint"
+                    popup="true"
+                    description="Add not null constraint for a column">
+            </action>
+            <action id="AddAutoIncrement"
+                    class="actions.add.AddAutoIncrement"
+                    text="Auto Increment"
+                    popup="true"
+                    description="Add auto increment for a column">
+            </action>
+            <action id="AddForeignKey"
+                    class="actions.add.AddForeignKey"
+                    text="Foreign Key"
+                    popup="true"
+                    description="Add foreign key for a table">
+            </action>
         </group>
 
         <group id="LiquibaseDrop" text="Drop..." popup="true">
