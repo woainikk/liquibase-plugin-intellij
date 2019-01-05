@@ -22,42 +22,75 @@
             <add-to-group group-id="EditorTabPopupMenu" anchor="last"/>
 
             <action id="generateChangesetAction"
-                    class="GenerateChangeSet"
+                    class="actions.GenerateChangeSet"
                     text="Generate Changeset"
                     popup="true"
                     description="Add migration for the database">
             </action>
 
             <action id="setAsAChangelog"
-                    class="Changelog"
+                    class="actions.Changelog"
                     text="Set as a changelog"
                     popup="true"
                     description="Choose this file as a current changelog">
             </action>
+
+            <action id="setAsAMasterChangelog"
+                    class="actions.MasterChangelog"
+                    text="Set as a Master Changelog"
+                    popup="true"
+                    description="Choose this file as a master changelog">
+            </action>
+
+            <action id="setIdValue"
+                    class="actions.IdValue"
+                    text="Reset id value"
+                    popup="true"
+                    description="Reset id value for changelog">
+            </action>
+
+
             <group id="LiquibaseAdd" text="Add..." popup="true">
                 <add-to-group group-id="LiquibaseGroup"/>
-                <action id="AddColumn"
-                        class="AddColumn"
+                <action id="actions.AddColumn"
+                        class="actions.AddColumn"
                         text="Column"
                         popup="true"
                         description="Generate Changeset for adding a column">
                 </action>
-                <action id="AddNotNullConstraint"
-                        class="AddNotNullConstraint"
+                <action id="actions.AddNotNullConstraint"
+                        class="actions.AddNotNullConstraint"
                         text="Not Null Constraint"
                         popup="true"
                         description="Add not null constraint for a column">
                 </action>
+                <action id="AddAutoIncrement"
+                        class="actions.AddAutoIncrement"
+                        text="Auto Increment"
+                        popup="true"
+                        description="Add auto increment for a column">
+                </action>
+                <action id="AddForeignKey"
+                        class="actions.AddForeignKey"
+                        text="Foreign Key"
+                        popup="true"
+                        description="Add foreign key for a table">
+                </action>
             </group>
-            <!--TODO-->
+
             <group id="LiquibaseDrop" text="Drop..." popup="true">
-                <add-to-group group-id="LiquibaseGroup"/>
-                <action id="DropColumn"
-                        class="DropColumn"
-                        text="Column"
+                <action class="actions.DropNotNullConstraint"
+                        id="actions.DropNotNullConstraint"
+                        text="Drop Not Null Constraint">
+                </action>
+                <action
+                        id="actions.DropColumn"
+                        class="actions.DropColumn"
+                        text="Drop Column"
                         popup="true"
                         description="Generate Changeset for dropping a column">
                 </action>
+                <add-to-group group-id="LiquibaseGroup"/>
             </group>
         </group>
     </actions>
