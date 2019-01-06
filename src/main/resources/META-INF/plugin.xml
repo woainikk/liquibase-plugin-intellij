@@ -5,8 +5,9 @@
     <description><![CDATA[
     This is plugin for Intellij Idea, which hepls to improve creation changesets with liquibase in yaml format.
     Firstly, set your name as author of changesets in Settings -> Tools -> Changesets Author.
-    Then, choose changelog-master and cnangelog by click on chosen file -> Liquibase -> Set as a
-    Changelog/Master-Changelog.
+    Then, choose changelog-master and cnangelog by click on chosen file -> Liquibase -> Set as ..
+    By clicking on sql file, changesets with that file will be added in changelog.
+    Also you can add other changesets with drop, add, rename and create actions.
     ]]></description>
     <extensions defaultExtensionNs="com.intellij">
         <applicationConfigurable groupId="tools" displayName="Changesets Author"
