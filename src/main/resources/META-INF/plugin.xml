@@ -1,6 +1,7 @@
 <idea-plugin>
     <id>woaini.liquibase.plugin</id>
     <name>Liquibase ChangeSets Generator</name>
+    <vendor>woainimrgrt@gmail.com</vendor>
 
     <description><![CDATA[
     This is plugin for Intellij Idea, which hepls to improve creation changesets with liquibase in yaml format.
