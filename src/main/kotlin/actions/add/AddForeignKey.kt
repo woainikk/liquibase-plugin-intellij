@@ -41,6 +41,5 @@ class AddForeignKey : AnAction() {
                     "         referencedTableName:\n\n"
         )
         GenerateChangeSet.id++
-
     }
 }

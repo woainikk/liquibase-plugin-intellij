@@ -39,8 +39,6 @@ class AddColumn : AnAction() {
                     "           tableName:\n\n"
         )
         GenerateChangeSet.id++
-
-
     }
 
 }

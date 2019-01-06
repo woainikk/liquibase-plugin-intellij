@@ -21,11 +21,10 @@ class GenerateChangeSet : AnAction() {
 
         val curentProject = ProjectManager.getInstance().openProjects[0]
         val currentfile = FileEditorManager.getInstance(curentProject).selectedFiles[0].name
-
-        findLastId(currentfile)
         if (!checkAuthorAndChangelogIsDetermined()) {
             return
         }
+        id = findLastId(Changelog.changelogFileName!!)
         insertChangeSet(currentfile)
     }
 
