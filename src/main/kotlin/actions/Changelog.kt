@@ -19,7 +19,7 @@ class Changelog : AnAction() {
 
         val curentProject = ProjectManager.getInstance().openProjects[0]
         changelogFileName = FileEditorManager.getInstance(curentProject).selectedFiles[0].path
-        val changelogAbsolutePath = File(changelogFileName).absolutePath
+        val changelogAbsolutePath = File(changelogFileName).absolutePath.substringAfter("resources")
 
         if (!checkMasterChangelogDetermined()) return
         val changelogMasterFile = File(MasterChangelog.changelogMasterName)

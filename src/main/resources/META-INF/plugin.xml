@@ -6,7 +6,7 @@
     Enter short description for your plugin here.<br>
     <em>most HTML tags may be used</em>
     ]]></description>
-    This is plugin for Intellij Idea, which hepls to improve creation changesets with liquibase.
+    This is plugin for Intellij Idea, which hepls to improve creation changesets with liquibase in yaml format.
     Firstly, set your name as author of changesets in Settings -> Tools -> Changesets Author.
     Then, choose changelog-master and cnangelog by click on chosen file -> Liquibase -> Set as a
     Changelog/Master-Changelog.
