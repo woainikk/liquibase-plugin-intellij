@@ -26,13 +26,13 @@ class RenameTable : AnAction() {
             IdValue.id = findLastId(Changelog.changelogFileName!!)
         }
         changelogFile.appendText(
-            "  - changeSet:\n" +
-                    "     id: ${IdValue.id}\n" +
-                    "     author: ${Author.authorName}\n" +
-                    "     changes:\n" +
-                    "     - renameTable:\n" +
-                    "         newTableName:\n" +
-                    "         oldTableName:\n\n"
+            " - changeSet:\n" +
+                    "   id: ${IdValue.id}\n" +
+                    "   author: ${Author.authorName}\n" +
+                    "   changes:\n" +
+                    "   - renameTable:\n" +
+                    "       newTableName:\n" +
+                    "       oldTableName:\n\n"
         )
         IdValue.id++
 

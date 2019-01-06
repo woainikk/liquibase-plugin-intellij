@@ -25,14 +25,14 @@ class CreateView : AnAction() {
             IdValue.id = findLastId(Changelog.changelogFileName!!)
         }
         changelogFile.appendText(
-            "  - changeSet:\n" +
-                    "     id: ${IdValue.id}\n" +
-                    "     author: ${Author.authorName}\n" +
-                    "     changes:\n" +
-                    "     - createView:\n" +
-                    "         replaceIfExists: true\n" +
-                    "         selectQuery:\n" +
-                    "         viewName:\n\n"
+            "- changeSet:\n" +
+                    "   id: ${IdValue.id}\n" +
+                    "   author: ${Author.authorName}\n" +
+                    "   changes:\n" +
+                    "   - createView:\n" +
+                    "       replaceIfExists: true\n" +
+                    "       selectQuery:\n" +
+                    "       viewName:\n\n"
         )
         IdValue.id++
 

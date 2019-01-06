@@ -27,16 +27,16 @@ class AddColumn : AnAction() {
         }
         findLastId(Changelog.changelogFileName!!)
         changelogFile.appendText(
-            "  - changeSet:\n" +
-                    "     id: ${IdValue.id}\n" +
-                    "     author: ${Author.authorName}\n" +
-                    "     changes:\n" +
-                    "     - addColumn:\n" +
-                    "           columns:\n" +
-                    "           - column:\n" +
-                    "               name:\n" +
-                    "               type: \n" +
-                    "           tableName:\n\n"
+            "- changeSet:\n" +
+                    "   id: ${IdValue.id}\n" +
+                    "   author: ${Author.authorName}\n" +
+                    "   changes:\n" +
+                    "   - addColumn:\n" +
+                    "         columns:\n" +
+                    "         - column:\n" +
+                    "             name:\n" +
+                    "             type: \n" +
+                    "        tableName:\n\n"
         )
         IdValue.id++
     }

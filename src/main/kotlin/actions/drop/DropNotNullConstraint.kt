@@ -27,14 +27,14 @@ class DropNotNullConstraint : AnAction() {
             IdValue.id = findLastId(Changelog.changelogFileName!!)
         }
         changelogFile.appendText(
-            "  - changeSet:\n" +
-                    "     id: ${IdValue.id}\n" +
-                    "     author: ${Author.authorName}\n" +
-                    "     changes:\n" +
-                    "     - dropNotNullConstraint:\n" +
-                    "         columnDataType:\n" +
-                    "         columnName:\n" +
-                    "         tableName:\n\n"
+            "- changeSet:\n" +
+                    "   id: ${IdValue.id}\n" +
+                    "   author: ${Author.authorName}\n" +
+                    "   changes:\n" +
+                    "   - dropNotNullConstraint:\n" +
+                    "       columnDataType:\n" +
+                    "       columnName:\n" +
+                    "       tableName:\n\n"
         )
         IdValue.id++
 

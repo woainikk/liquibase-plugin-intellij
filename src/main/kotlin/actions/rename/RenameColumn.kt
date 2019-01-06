@@ -27,15 +27,15 @@ class RenameColumn : AnAction() {
         }
 
         changelogFile.appendText(
-            "  - changeSet:\n" +
-                    "     id: ${IdValue.id}\n" +
-                    "     author: ${Author.authorName}\n" +
-                    "     changes:\n" +
-                    "     - renameColumn:\n" +
-                    "         columnDataType:\n" +
-                    "         newColumnName:\n" +
-                    "         oldColumnName:\n" +
-                    "         tableName:\n\n"
+            "- changeSet:\n" +
+                    "   id: ${IdValue.id}\n" +
+                    "   author: ${Author.authorName}\n" +
+                    "   changes:\n" +
+                    "   - renameColumn:\n" +
+                    "       columnDataType:\n" +
+                    "       newColumnName:\n" +
+                    "       oldColumnName:\n" +
+                    "       tableName:\n\n"
         )
         IdValue.id++
 

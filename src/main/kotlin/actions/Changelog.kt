@@ -20,11 +20,12 @@ class Changelog : AnAction() {
         val curentProject = ProjectManager.getInstance().openProjects[0]
         changelogFileName = FileEditorManager.getInstance(curentProject).selectedFiles[0].path
         val changelogAbsolutePath = File(changelogFileName).absolutePath.substringAfter("resources")
+        println(changelogAbsolutePath)
 
         if (!checkMasterChangelogDetermined()) return
         val changelogMasterFile = File(MasterChangelog.changelogMasterName)
 
-        if (!checkFileContainString(changelogMasterFile, changelogFileName!!)) {
+        if (!checkFileContainString(changelogMasterFile, changelogAbsolutePath!!)) {
             addHeaderToChangelog(changelogMasterFile)
             changelogMasterFile.appendText(
                 "    - include:\n" +

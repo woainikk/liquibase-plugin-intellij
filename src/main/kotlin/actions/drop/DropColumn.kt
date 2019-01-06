@@ -26,13 +26,13 @@ class DropColumn : AnAction() {
             IdValue.id = findLastId(Changelog.changelogFileName!!)
         }
         changelogFile.appendText(
-            "  - changeSet:\n" +
-                    "     id: ${IdValue.id}\n" +
-                    "     author: ${Author.authorName}\n" +
-                    "     changes:\n" +
-                    "     - dropColumn:\n" +
-                    "         columnName:\n" +
-                    "         tableName:\n\n"
+            "- changeSet:\n" +
+                    "   id: ${IdValue.id}\n" +
+                    "   author: ${Author.authorName}\n" +
+                    "    changes:\n" +
+                    "   - dropColumn:\n" +
+                    "       columnName:\n" +
+                    "       tableName:\n\n"
         )
         IdValue.id++
 

@@ -31,13 +31,13 @@ class GenerateChangeSet : AnAction() {
         addHeaderToChangelog(changelogFile)
         if (checkFileContainString(changelogFile, filename)) return
         changelogFile.appendText(
-            "  - changeSet:\n" +
-                    "      id: ${IdValue.id}\n" +
-                    "      author: ${Author.authorName}\n" +
-                    "      changes:\n" +
-                    "       - sqlfile:\n" +
-                    "           path: $filename\n" +
-                    "           relativeToChangelogFile: true \n\n"
+               "- changeSet:\n" +
+                    "    id: ${IdValue.id}\n" +
+                    "    author: ${Author.authorName}\n" +
+                    "    changes:\n" +
+                    "    - sqlFile:\n" +
+                    "        path: $filename\n" +
+                    "        relativeToChangelogFile: true \n\n"
         )
         IdValue.id++
     }

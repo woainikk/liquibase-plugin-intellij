@@ -26,13 +26,13 @@ class RenameView : AnAction() {
             IdValue.id = findLastId(Changelog.changelogFileName!!)
         }
         changelogFile.appendText(
-            "  - changeSet:\n" +
-                    "     id: ${IdValue.id}\n" +
-                    "     author: ${Author.authorName}\n" +
-                    "     changes:\n" +
-                    "     - renameView:\n" +
-                    "         newViewName:\n" +
-                    "         oldViewName:\n\n"
+            "- changeSet:\n" +
+                    "   id: ${IdValue.id}\n" +
+                    "   author: ${Author.authorName}\n" +
+                    "   changes:\n" +
+                    "   - renameView:\n" +
+                    "       newViewName:\n" +
+                    "       oldViewName:\n\n"
         )
         IdValue.id++
 

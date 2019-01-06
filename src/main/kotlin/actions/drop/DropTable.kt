@@ -26,13 +26,13 @@ class DropTable : AnAction() {
             IdValue.id = findLastId(Changelog.changelogFileName!!)
         }
         changelogFile.appendText(
-            "  - changeSet:\n" +
-                    "     id: ${IdValue.id}\n" +
-                    "     author: ${Author.authorName}\n" +
-                    "     changes:\n" +
-                    "     - dropTable:\n" +
-                    "         tableName:\n" +
-                    "         cascadeConstraints: true\n\n"
+            "- changeSet:\n" +
+                    "   id: ${IdValue.id}\n" +
+                    "   author: ${Author.authorName}\n" +
+                    "   changes:\n" +
+                    "   - dropTable:\n" +
+                    "       tableName:\n" +
+                    "       cascadeConstraints: true\n\n"
         )
         IdValue.id++
 
