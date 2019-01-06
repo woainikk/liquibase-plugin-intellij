@@ -2,7 +2,6 @@ package actions.add
 
 import Author
 import actions.Changelog
-import actions.GenerateChangeSet
 import addHeaderToChangelog
 import checkAuthorAndChangelogIsDetermined
 import com.intellij.openapi.actionSystem.AnAction

@@ -1,7 +1,6 @@
 package actions.drop
 
 import actions.Changelog
-import actions.GenerateChangeSet
 import addHeaderToChangelog
 import checkAuthorAndChangelogIsDetermined
 import com.intellij.openapi.actionSystem.AnAction
