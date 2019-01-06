@@ -13,10 +13,6 @@ import java.io.File
 
 class GenerateChangeSet : AnAction() {
 
-    companion object {
-        var id = 1
-    }
-
     override fun actionPerformed(e: AnActionEvent?) {
 
         val curentProject = ProjectManager.getInstance().openProjects[0]
@@ -24,8 +20,10 @@ class GenerateChangeSet : AnAction() {
         if (!checkAuthorAndChangelogIsDetermined()) {
             return
         }
-        id = findLastId(Changelog.changelogFileName!!)
         insertChangeSet(currentfile)
+        if (IdValue.id < findLastId(Changelog.changelogFileName!!)) {
+            IdValue.id = findLastId(Changelog.changelogFileName!!)
+        }
     }
 
     private fun insertChangeSet(filename: String) {
@@ -34,14 +32,14 @@ class GenerateChangeSet : AnAction() {
         if (checkFileContainString(changelogFile, filename)) return
         changelogFile.appendText(
             "  - changeSet:\n" +
-                    "      id: $id\n" +
+                    "      id: ${IdValue.id}\n" +
                     "      author: ${Author.authorName}\n" +
                     "      changes:\n" +
                     "       - sqlfile:\n" +
                     "           path: $filename\n" +
                     "           relativeToChangelogFile: true \n\n"
         )
-        id++
+        IdValue.id++
     }
 
 }

@@ -19,10 +19,12 @@ class AddAutoIncrement : AnAction() {
     private fun insertAddAutoIncrement() {
         val changelogFile = File(Changelog.changelogFileName)
         addHeaderToChangelog(changelogFile)
-        GenerateChangeSet.id = findLastId(Changelog.changelogFileName!!)
+        if (IdValue.id < findLastId(Changelog.changelogFileName!!)) {
+            IdValue.id = findLastId(Changelog.changelogFileName!!)
+        }
         changelogFile.appendText(
             "  - changeSet:\n" +
-                    "     id: ${GenerateChangeSet.id}\n" +
+                    "     id: ${IdValue.id}\n" +
                     "     author: ${Author.authorName}\n" +
                     "     changes:\n" +
                     "     - addAutoIncrement:\n" +
@@ -32,7 +34,7 @@ class AddAutoIncrement : AnAction() {
                     "         incrementBy: 1\n" +
                     "         startWith:\n\n"
         )
-        GenerateChangeSet.id++
+        IdValue.id++
 
     }
 

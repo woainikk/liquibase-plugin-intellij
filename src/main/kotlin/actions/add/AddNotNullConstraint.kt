@@ -23,11 +23,12 @@ class AddNotNullConstraint : AnAction() {
     private fun insertNotNullConstraint() {
         val changelogFile = File(Changelog.changelogFileName)
         addHeaderToChangelog(changelogFile)
-        GenerateChangeSet.id = findLastId(Changelog.changelogFileName!!)
-
+        if (IdValue.id < findLastId(Changelog.changelogFileName!!)) {
+            IdValue.id = findLastId(Changelog.changelogFileName!!)
+        }
         changelogFile.appendText(
             "  - changeSet:\n" +
-                    "     id: ${GenerateChangeSet.id}\n" +
+                    "     id: ${IdValue.id}\n" +
                     "     author: ${Author.authorName}\n" +
                     "     changes:\n" +
                     "     - addNotNullConstraint:\n" +
@@ -36,7 +37,7 @@ class AddNotNullConstraint : AnAction() {
                     "         defaultNullValue:\n" +
                     "         tableName:\n\n"
         )
-        GenerateChangeSet.id++
+        IdValue.id++
     }
 
 }
