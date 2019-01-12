@@ -26,19 +26,19 @@ class AddForeignKey : AnAction() {
             IdValue.id = findLastId(Changelog.changelogFileName!!)
         }
         changelogFile.appendText(
-            "- changeSet:\n" +
-                    "   id: ${IdValue.id}\n" +
-                    "   author: ${Author.authorName}\n" +
-                    "   changes:\n" +
-                    "   - addForeignKeyConstraint:\n" +
-                    "       baseColumnNames:\n" +
-                    "       baseTableName:\n" +
-                    "       constraintName:\n" +
-                    "       initiallyDeferred:\n" +
-                    "       onDelete:\n" +
-                    "       onUpdate:\n" +
-                    "       referencedColumnNames:\n" +
-                    "       referencedTableName:\n\n"
+            """- changeSet:
+                    "   id: ${IdValue.id}
+                    "   author: ${Author.authorName}
+                    "   changes:
+                    "   - addForeignKeyConstraint:
+                    "       baseColumnNames:
+                    "       baseTableName:
+                    "       constraintName:
+                    "       initiallyDeferred:
+                    "       onDelete:
+                    "       onUpdate:
+                    "       referencedColumnNames:
+                    "       referencedTableName:"""
         )
         IdValue.id++
     }
