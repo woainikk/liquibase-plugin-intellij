@@ -1,6 +1,5 @@
 package actions.drop
 
-import actions.Changelog
 import addHeaderToChangelog
 import checkAuthorAndChangelogIsDetermined
 import com.intellij.openapi.actionSystem.AnAction
@@ -19,15 +18,15 @@ class DropTable : AnAction() {
     }
 
     private fun insertDropTable() {
-        val changelogFile = File(Changelog.changelogFileName)
+        val changelogFile = File(Settings.changelogFileName)
         addHeaderToChangelog(changelogFile)
-        if (IdValue.id < findLastId(Changelog.changelogFileName!!)) {
-            IdValue.id = findLastId(Changelog.changelogFileName!!)
+        if (IdValue.id < findLastId(Settings.changelogFileName!!)) {
+            IdValue.id = findLastId(Settings.changelogFileName!!)
         }
         changelogFile.appendText(
             "- changeSet:\n" +
                     "   id: ${IdValue.id}\n" +
-                    "   author: ${Author.authorName}\n" +
+                    "   author: ${Settings.authorName}\n" +
                     "   changes:\n" +
                     "   - dropTable:\n" +
                     "       tableName:\n" +

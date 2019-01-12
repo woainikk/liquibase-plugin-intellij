@@ -11,21 +11,18 @@ import java.io.File
 
 class Changelog : AnAction() {
 
-    companion object {
-        var changelogFileName: String? = null
-    }
 
     override fun actionPerformed(e: AnActionEvent?) {
 
         val curentProject = ProjectManager.getInstance().openProjects[0]
-        changelogFileName = FileEditorManager.getInstance(curentProject).selectedFiles[0].path
-        val changelogAbsolutePath = File(changelogFileName).absolutePath.substringAfter("resources")
+        Settings.changelogFileName = FileEditorManager.getInstance(curentProject).selectedFiles[0].path
+        val changelogAbsolutePath = File(Settings.changelogFileName).absolutePath.substringAfter("resources")
         println(changelogAbsolutePath)
 
         if (!checkMasterChangelogDetermined()) return
-        val changelogMasterFile = File(MasterChangelog.changelogMasterName)
+        val changelogMasterFile = File(Settings.masterChangelogFileName)
 
-        if (!checkFileContainString(changelogMasterFile, changelogAbsolutePath!!)) {
+        if (!checkFileContainString(changelogMasterFile, changelogAbsolutePath)) {
             addHeaderToChangelog(changelogMasterFile)
             changelogMasterFile.appendText(
                 "    - include:\n" +

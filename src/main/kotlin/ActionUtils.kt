@@ -1,18 +1,16 @@
-import actions.Changelog
-import actions.MasterChangelog
 import java.io.File
 import java.util.*
 import javax.swing.JOptionPane
 
 fun checkAuthorAndChangelogIsDetermined(): Boolean {
-    if (Author.authorName == null) {
+    if (Settings.authorName == null) {
         JOptionPane.showMessageDialog(
             null, "Author name is empty!\n " +
                     "Set it in File -> Settings -> Tools -> Changesets Author."
         )
         return false
     }
-    if (Changelog.changelogFileName == null) {
+    if (Settings.changelogFileName == null) {
         JOptionPane.showMessageDialog(
             null, "Changelog file is not determined!\n " +
                     "Click on prefered as a changelod file and click Liquibase -> Set as a changelog."
@@ -29,7 +27,7 @@ fun addHeaderToChangelog(changelogFile: File) {
 }
 
 fun checkMasterChangelogDetermined(): Boolean {
-    if (MasterChangelog.changelogMasterName == null) {
+    if (Settings.masterChangelogFileName == null) {
         JOptionPane.showMessageDialog(
             null, "Master changelog file is not determined!\n " +
                     "Click on prefered as a master changelod file and click Liquibase -> Set as a master changelog."

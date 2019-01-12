@@ -9,5 +9,4 @@ class AuthorNameInputGui {
     var inputAuthorOfChangesetsTextArea: JTextArea? = null
     var authorName = author!!.text
 
-
 }

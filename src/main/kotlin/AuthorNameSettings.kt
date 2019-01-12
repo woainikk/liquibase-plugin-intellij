@@ -9,7 +9,7 @@ class AuthorNameSettings : Configurable {
     override fun createComponent(): JComponent? = settings.panel
 
     override fun apply() {
-        Author.authorName = settings.author?.text ?: "user"
+        Settings.authorName = settings.author?.text ?: "user"
     }
 
     override fun getDisplayName(): String = "Input your name"

@@ -1,6 +1,5 @@
 package actions.create
 
-import actions.Changelog
 import addHeaderToChangelog
 import checkAuthorAndChangelogIsDetermined
 import com.intellij.openapi.actionSystem.AnAction
@@ -19,16 +18,16 @@ class CreateIndex : AnAction() {
     }
 
     private fun insertAddIndex() {
-        val changelogFile = File(Changelog.changelogFileName)
+        val changelogFile = File(Settings.changelogFileName)
         addHeaderToChangelog(changelogFile)
-        if (IdValue.id < findLastId(Changelog.changelogFileName!!)) {
-            IdValue.id = findLastId(Changelog.changelogFileName!!)
+        if (IdValue.id < findLastId(Settings.changelogFileName!!)) {
+            IdValue.id = findLastId(Settings.changelogFileName!!)
         }
 
         changelogFile.appendText(
             """- changeSet:
                         id: ${IdValue.id}
-                        author: ${Author.authorName}
+                        author: ${Settings.authorName}
                         changes:
                         - createIndex:
                            columns:

@@ -14,8 +14,9 @@
         <applicationConfigurable groupId="tools" displayName="Changesets Author"
                                  id="AuthorForChangesets"
                                  instance="AuthorNameSettings"/>
-        <applicationService serviceInterface="AuthorNameSettings"
-                            serviceImplementation="AuthorNameSettings"/>
+        <applicationService serviceInterface="PersistentSettings"
+                            serviceImplementation="PersistentSettings"/>
+
     </extensions>
 
 

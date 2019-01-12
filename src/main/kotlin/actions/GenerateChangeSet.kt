@@ -1,6 +1,5 @@
 package actions
 
-import Author
 import addHeaderToChangelog
 import checkAuthorAndChangelogIsDetermined
 import checkFileContainString
@@ -21,19 +20,19 @@ class GenerateChangeSet : AnAction() {
             return
         }
         insertChangeSet(currentfile)
-        if (IdValue.id < findLastId(Changelog.changelogFileName!!)) {
-            IdValue.id = findLastId(Changelog.changelogFileName!!)
+        if (IdValue.id < findLastId(Settings.changelogFileName!!)) {
+            IdValue.id = findLastId(Settings.changelogFileName!!)
         }
     }
 
     private fun insertChangeSet(filename: String) {
-        val changelogFile = File(Changelog.changelogFileName)
+        val changelogFile = File(Settings.changelogFileName)
         addHeaderToChangelog(changelogFile)
         if (checkFileContainString(changelogFile, filename)) return
         changelogFile.appendText(
                "- changeSet:\n" +
                     "    id: ${IdValue.id}\n" +
-                    "    author: ${Author.authorName}\n" +
+                    "    author: ${Settings.authorName}\n" +
                     "    changes:\n" +
                     "    - sqlFile:\n" +
                     "        path: $filename\n" +

@@ -7,13 +7,9 @@ import com.intellij.openapi.project.ProjectManager
 
 class MasterChangelog : AnAction() {
 
-    companion object {
-        var changelogMasterName: String? = null
-    }
-
     override fun actionPerformed(e: AnActionEvent?) {
         val curentProject = ProjectManager.getInstance().openProjects[0]
-        changelogMasterName = FileEditorManager.getInstance(curentProject).selectedFiles[0].path
+        Settings.masterChangelogFileName = FileEditorManager.getInstance(curentProject).selectedFiles[0].path
     }
 
 }

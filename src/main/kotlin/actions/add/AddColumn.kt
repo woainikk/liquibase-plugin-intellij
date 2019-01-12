@@ -1,7 +1,5 @@
 package actions.add
 
-import Author
-import actions.Changelog
 import addHeaderToChangelog
 import checkAuthorAndChangelogIsDetermined
 import com.intellij.openapi.actionSystem.AnAction
@@ -20,23 +18,24 @@ class AddColumn : AnAction() {
     }
 
     private fun insertAddingColumn() {
-        val changelogFile = File(Changelog.changelogFileName)
+        val changelogFile = File(Settings.changelogFileName)
         addHeaderToChangelog(changelogFile)
-        if (IdValue.id < findLastId(Changelog.changelogFileName!!)) {
-            IdValue.id = findLastId(Changelog.changelogFileName!!)
+        if (IdValue.id < findLastId(Settings.changelogFileName!!)) {
+            IdValue.id = findLastId(Settings.changelogFileName!!)
         }
-        findLastId(Changelog.changelogFileName!!)
+        findLastId(Settings.changelogFileName!!)
         changelogFile.appendText(
-            """- changeSet:
-                        id: ${IdValue.id}
-                        author: ${Author.authorName}
-                        changes:
-                        - addColumn:
-                              columns:
-                             - column:
-                                 name:
-                                 type:
-                            tableName:"""
+            """
+- changeSet:
+id: ${IdValue.id}
+author: ${Settings.authorName}
+changes:
+- addColumn:
+columns:
+- column:
+name:
+type:
+tableName:"""
         )
         IdValue.id++
     }
