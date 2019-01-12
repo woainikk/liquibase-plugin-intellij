@@ -25,18 +25,18 @@ class CreateIndex : AnAction() {
         }
 
         changelogFile.appendText(
-            """- changeSet:
-                        id: ${IdValue.id}
-                        author: ${Settings.authorName}
-                        changes:
-                        - createIndex:
-                           columns:
-                           - column:
-                               name:
-                               type:
-                           indexName:
-                           tableName:
-                           unique:"""
+                "- changeSet:\n" +
+                    "    id: ${IdValue.id}\n" +
+                    "    author: ${Settings.authorName}\n" +
+                    "      changes:\n" +
+                    "      - createIndex:\n" +
+                    "      columns:\n" +
+                    "        - column:\n" +
+                    "        name:\n" +
+                    "        type:\n" +
+                    "        indexName:\n" +
+                    "        tableName:\n" +
+                    "        unique:\n\n"
         )
         IdValue.id++
 

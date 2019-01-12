@@ -24,15 +24,15 @@ class AddNotNullConstraint : AnAction() {
             IdValue.id = findLastId(Settings.changelogFileName!!)
         }
         changelogFile.appendText(
-              """- changeSet:
-                    "    id: ${IdValue.id}
-                    "    author: ${Settings.authorName}
-                    "    changes:
-                    "    - addNotNullConstraint:
-                    "       columnDataType:
-                    "       columnName:
-                    "       defaultNullValue:
-                    "       tableName:"""
+            "- changeSet:\n" +
+                    "    id: ${IdValue.id}\n" +
+                    "    author: ${Settings.authorName}\n" +
+                    "    changes:\n" +
+                    "    - addNotNullConstraint:\n" +
+                    "       columnDataType:\n" +
+                    "       columnName:\n" +
+                    "       defaultNullValue:\n" +
+                    "       tableName:\n"
         )
         IdValue.id++
     }

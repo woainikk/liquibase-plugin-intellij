@@ -22,16 +22,16 @@ class AddAutoIncrement : AnAction() {
             IdValue.id = findLastId(Settings.changelogFileName!!)
         }
         changelogFile.appendText(
-            """- changeSet:
-                        id: ${IdValue.id}
-                        author: ${Settings.authorName}
-                        changes:
-                        - addAutoIncrement:
-                           columnDataType:
-                           columnName:
-                           tableName:
-                           incrementBy: 1
-                           startWith: """
+            "- changeSet:\n" +
+                    "    id: ${IdValue.id}\n" +
+                    "    author: ${Settings.authorName}\n" +
+                    "       changes:\n" +
+                    "       - addAutoIncrement:\n" +
+                    "          columnDataType:\n" +
+                    "          columnName:\n" +
+                    "          tableName:\n" +
+                    "          incrementBy: 1\n" +
+                    "          startWith: \n\n"
         )
         IdValue.id++
 
