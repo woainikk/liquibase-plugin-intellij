@@ -3,6 +3,8 @@
     <name>Liquibase ChangeSets Generator</name>
     <vendor>woainimrgrt@gmail.com</vendor>
 
+    <idea-version since-build="141.0"/>
+
     <description><![CDATA[
     This is plugin for Intellij Idea, which hepls to improve creation changesets with liquibase in yaml format.
     Firstly, set your name as author of changesets in Settings -> Tools -> Changesets Author.
