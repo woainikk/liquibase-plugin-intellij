@@ -1,26 +1,11 @@
 package actions.add
 
-import actions.Changelog
-import addHeaderToChangelog
-import checkAuthorAndChangelogIsDetermined
-import com.intellij.openapi.actionSystem.AnAction
-import com.intellij.openapi.actionSystem.AnActionEvent
-import findLastId
+import actions.ChangesetAction
 import java.io.File
 
-class AddAutoIncrement : AnAction() {
+class AddAutoIncrement : ChangesetAction() {
 
-    override fun actionPerformed(e: AnActionEvent?) {
-        checkAuthorAndChangelogIsDetermined()
-        insertAddAutoIncrement()
-    }
-
-    private fun insertAddAutoIncrement() {
-        val changelogFile = File(Settings.changelogFileName)
-        addHeaderToChangelog(changelogFile)
-        if (IdValue.id < findLastId(Settings.changelogFileName!!)) {
-            IdValue.id = findLastId(Settings.changelogFileName!!)
-        }
+    override fun insertChangeset(changelogFile: File) {
         changelogFile.appendText(
             "- changeSet:\n" +
                     "    id: ${IdValue.id}\n" +
@@ -34,7 +19,6 @@ class AddAutoIncrement : AnAction() {
                     "          startWith: \n\n"
         )
         IdValue.id++
-
     }
 
 }

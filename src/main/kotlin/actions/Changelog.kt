@@ -14,8 +14,8 @@ class Changelog : AnAction() {
 
     override fun actionPerformed(e: AnActionEvent?) {
 
-        val curentProject = ProjectManager.getInstance().openProjects[0]
-        Settings.changelogFileName = FileEditorManager.getInstance(curentProject).selectedFiles[0].path
+        val currentProject = ProjectManager.getInstance().openProjects[0]
+        Settings.changelogFileName = FileEditorManager.getInstance(currentProject).selectedFiles[0].path
         val changelogAbsolutePath = File(Settings.changelogFileName).absolutePath.substringAfter("resources")
         println(changelogAbsolutePath)
 

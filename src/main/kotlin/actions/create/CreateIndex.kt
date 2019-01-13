@@ -1,31 +1,13 @@
 package actions.create
 
-import addHeaderToChangelog
-import checkAuthorAndChangelogIsDetermined
-import com.intellij.openapi.actionSystem.AnAction
-import com.intellij.openapi.actionSystem.AnActionEvent
-import findLastId
+import actions.ChangesetAction
 import java.io.File
 
-class CreateIndex : AnAction() {
+class CreateIndex : ChangesetAction() {
 
-    override fun actionPerformed(e: AnActionEvent?) {
-
-        if (!checkAuthorAndChangelogIsDetermined()) {
-            return
-        }
-        insertAddIndex()
-    }
-
-    private fun insertAddIndex() {
-        val changelogFile = File(Settings.changelogFileName)
-        addHeaderToChangelog(changelogFile)
-        if (IdValue.id < findLastId(Settings.changelogFileName!!)) {
-            IdValue.id = findLastId(Settings.changelogFileName!!)
-        }
-
+    override fun insertChangeset(changelogFile: File) {
         changelogFile.appendText(
-                "- changeSet:\n" +
+            "- changeSet:\n" +
                     "    id: ${IdValue.id}\n" +
                     "    author: ${Settings.authorName}\n" +
                     "      changes:\n" +
@@ -39,6 +21,6 @@ class CreateIndex : AnAction() {
                     "        unique:\n\n"
         )
         IdValue.id++
-
     }
+
 }

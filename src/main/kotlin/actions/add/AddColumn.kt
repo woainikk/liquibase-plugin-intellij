@@ -1,29 +1,11 @@
 package actions.add
 
-import addHeaderToChangelog
-import checkAuthorAndChangelogIsDetermined
-import com.intellij.openapi.actionSystem.AnAction
-import com.intellij.openapi.actionSystem.AnActionEvent
-import findLastId
+import actions.ChangesetAction
 import java.io.File
 
-class AddColumn : AnAction() {
+class AddColumn : ChangesetAction() {
 
-    override fun actionPerformed(e: AnActionEvent?) {
-
-        if (!checkAuthorAndChangelogIsDetermined()) {
-            return
-        }
-        insertAddingColumn()
-    }
-
-    private fun insertAddingColumn() {
-        val changelogFile = File(Settings.changelogFileName)
-        addHeaderToChangelog(changelogFile)
-        if (IdValue.id < findLastId(Settings.changelogFileName!!)) {
-            IdValue.id = findLastId(Settings.changelogFileName!!)
-        }
-        findLastId(Settings.changelogFileName!!)
+    override fun insertChangeset(changelogFile: File) {
         changelogFile.appendText(
             " - changeSet:\n" +
                     "     id: ${IdValue.id}\n" +

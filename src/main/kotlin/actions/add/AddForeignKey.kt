@@ -1,26 +1,16 @@
 package actions.add
 
+import actions.ChangesetAction
 import addHeaderToChangelog
-import checkAuthorAndChangelogIsDetermined
-import com.intellij.openapi.actionSystem.AnAction
-import com.intellij.openapi.actionSystem.AnActionEvent
 import findLastId
 import java.io.File
 
-class AddForeignKey : AnAction() {
+class AddForeignKey : ChangesetAction() {
 
-    override fun actionPerformed(e: AnActionEvent?) {
-
-        if (!checkAuthorAndChangelogIsDetermined()) {
-            return
-        }
-        insertAddForeignKey()
-    }
-
-    private fun insertAddForeignKey() {
+    override fun insertChangeset(changelogFile: File) {
         val changelogFile = File(Settings.changelogFileName)
         addHeaderToChangelog(changelogFile)
-        if (IdValue.id < findLastId(Settings.changelogFileName!!)) {
+        if (changelogFile.length() > 10) {
             IdValue.id = findLastId(Settings.changelogFileName!!)
         }
         changelogFile.appendText(
@@ -40,4 +30,5 @@ class AddForeignKey : AnAction() {
         )
         IdValue.id++
     }
+
 }

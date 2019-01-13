@@ -1,28 +1,11 @@
 package actions.drop
 
-import addHeaderToChangelog
-import checkAuthorAndChangelogIsDetermined
-import com.intellij.openapi.actionSystem.AnAction
-import com.intellij.openapi.actionSystem.AnActionEvent
-import findLastId
+import actions.ChangesetAction
 import java.io.File
 
-class DropNotNullConstraint : AnAction() {
+class DropNotNullConstraint : ChangesetAction() {
 
-    override fun actionPerformed(e: AnActionEvent?) {
-
-        if (!checkAuthorAndChangelogIsDetermined()) {
-            return
-        }
-        insertDropNotNullConstraint()
-    }
-
-    private fun insertDropNotNullConstraint() {
-        val changelogFile = File(Settings.changelogFileName)
-        addHeaderToChangelog(changelogFile)
-        if (IdValue.id < findLastId(Settings.changelogFileName!!)) {
-            IdValue.id = findLastId(Settings.changelogFileName!!)
-        }
+    override fun insertChangeset(changelogFile: File) {
         changelogFile.appendText(
             "- changeSet:\n" +
                     "   id: ${IdValue.id}\n" +
@@ -34,7 +17,6 @@ class DropNotNullConstraint : AnAction() {
                     "       tableName:\n\n"
         )
         IdValue.id++
-
     }
 
 }
